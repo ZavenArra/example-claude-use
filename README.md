@@ -1,5 +1,19 @@
 # `organization_aggregates`
 
+
+This repo shows a way to use claude, or other agentic coding tools.  All files in inputs/ were given to claude code to generate the plan.  The plan is output to PLAN.md.  This plan was fed to a completely clear new session of claude code.  Outputs are in outputs/.  Only a couple tiny adjustments were made to the outputs.
+
+
+
+
+
+
+
+
+
+
+## Other Stuff Claude Said
+
 Pre-joined, pre-aggregated Postgres views that replace the live map-tile query in
 `2-current-query-shape.MD`. Refreshed every 6 hours by Airflow. The tile server's
 query becomes a filtered read of one view plus one self-join — no recursive CTE,
