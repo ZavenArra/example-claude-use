@@ -35,7 +35,7 @@ SELECT
 FROM organization_aggregates.organization_clusters c
 -- region.geom is looked up per cluster rather than stored in the MV; this is an
 -- indexed PK probe. See fidelity note 2 in 30_organization_clusters.sql.
-LEFT JOIN region r ON r.id = c.id
+LEFT JOIN region r ON r.id = c.region_id
 LEFT JOIN LATERAL (
   -- The most-populated subregion two zoom levels in, whose centroid falls inside
   -- this cluster's region polygon.

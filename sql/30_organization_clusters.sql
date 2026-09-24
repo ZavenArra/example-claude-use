@@ -29,7 +29,7 @@ SELECT
   h.ancestor_id                         AS organization_id,
   h.is_root_ancestor                    AS is_root_org,
   atr.zoom_level,
-  atr.region_id                         AS id,
+  atr.region_id                         AS region_id,
   atr.type_id                           AS region_type,
   atr.centroid,                                        -- raw: envelope filter + containment match
   st_point(LEAST(st_x(atr.centroid), 170), st_y(atr.centroid))                AS estimated_geometric_location,
@@ -37,6 +37,8 @@ SELECT
   count(atr.id)                         AS count,
   CASE WHEN count(atr.id) > 1000
        THEN (count(atr.id) / 1000) || 'K'
+       WHEN count(atr.id) > 1000000
+       THEN (count(atr.id) / 1000000) || 'M'
        ELSE count(atr.id) || ''
   END                                   AS count_text
 FROM active_tree_region atr
@@ -76,7 +78,7 @@ COMMENT ON MATERIALIZED VIEW organization_aggregates.organization_clusters IS
 -- -----------------------------------------------------------------------------
 -- Required for REFRESH MATERIALIZED VIEW CONCURRENTLY, and it is the grain.
 CREATE UNIQUE INDEX organization_clusters_uk
-  ON organization_aggregates.organization_clusters (organization_id, zoom_level, id);
+  ON organization_aggregates.organization_clusters (organization_id, zoom_level, region_id);
 
 -- The live query's entire WHERE clause in one index: equality on organization_id
 -- and zoom_level, then the centroid && envelope test. Needs btree_gist (created
