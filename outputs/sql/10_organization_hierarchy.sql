@@ -30,11 +30,13 @@ edge AS (
   FROM entity_relationship er
   JOIN entity pe ON pe.id = er.parent_id
   WHERE er.child_id IS NOT NULL
+  AND ( pe.type = 'o' OR pe.type = 'O' )
 ),
 ancestry AS (
   -- Anchor: every org is its own ancestor at depth 0.
   SELECT e.id AS organization_id, e.id AS ancestor_id, 0 AS depth, ARRAY[e.id] AS path
   FROM entity e
+  WHERE e.type = 'o' OR e.type = 'O'
   UNION ALL
   -- Walk upward. The path guard is the cycle protection: plain UNION does not
   -- stop a cycle here, because each loop produces a new depth and so a new row.

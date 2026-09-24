@@ -1,0 +1,4 @@
+# Baseline captured before implementation
+captured_at: 2026-09-24T20:56:01Z
+cost_usd: cost_source: statusline (live)
+output_tokens: 56831

@@ -1,0 +1,11 @@
+{
+  "permissions": {
+    "allow": [
+      "Read(//Users/zaven/software-development/AI/claude-stuff/**)",
+      "Read(//Users/zaven/**)",
+      "Bash(cp *)",
+      "Bash(/Users/zaven/.claude/statusline.sh)",
+      "Bash(echo \"---exit:$?\")"
+    ]
+  }
+}

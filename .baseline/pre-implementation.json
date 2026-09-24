@@ -1,0 +1,9 @@
+{
+  "phase": "pre-implementation",
+  "captured_at": "2026-09-24T20:56:16Z",
+  "costUSD": 1.59420325,
+  "source": "statusline (live)",
+  "output_tokens": 58330,
+  "contextTokens": 62165,
+  "apiDurationMs": 359447
+}
